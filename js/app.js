@@ -7,12 +7,6 @@ App = Ember.Application.create(
 App.Router.map(function(){
     this.route('about', {path: '/aboutus'}); //All main pages - not Nouns
     this.resource('people', {path: '/family'}); //All type pages - Nouns
-    this.resource('products', function (){
-      this.resource('product', {path: '/:people_id'});
-    });
-    this.resource('jobs', function(){
-      this.resource('job', {path: '/:company'});
-    });
 });
 
 
@@ -27,18 +21,8 @@ App.IndexController = Ember.Controller.extend({
   }.property()
 });
 
-//Route for the page that will have a list of all the jobs.
-App.JobsRoute = Ember.Route.extend({
-  model: function(){
-    return App.COMPANIES;
-  }
-});
-
-//route that when called upon will have the data for the specific page.
-App.JobRoute = Ember.Route.extend({
-  model: function(params){
-    return App.COMPANIES.findBy('name', params.name);
-  }
+App.AboutController = Ember.Controller.extend({
+  story: "I'm learning Emberjs at the moment. I had to remove some things to start fresh so that I understand the concepts a little better."
 });
 
 //Route - how the data should be presented - access data
@@ -51,29 +35,8 @@ App.PeopleRoute = Ember.Route.extend({
   }
 });
 
-App.ProductsRoute = Ember.Route.extend({
-  model: function(){
-    return this.store.findAll('people');
-  }
-});
-
-App.ProductRoute = Ember.Route.extend({
-  model: function(params){
-    return this.store.find('people', params.people_id);
-  }
-});
-
-App.Product = DS.Model.extend({
-  name: DS.attr('string'),
-  age: DS.attr('number'),
-  family: DS.attr('boolean')
-
-});
-
-
-
 //Data for the Ember App
-App.People.FIXTURES = [
+App.PEOPLE = [
   { id: 1,
     name: 'jeremy',
     age: 26,
