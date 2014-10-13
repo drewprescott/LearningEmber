@@ -7,8 +7,8 @@
   <title>Ember Starter Kit</title>
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/foundation.css">
-  <script src="js/vendor/modernizr.js"></script>
-  <script src="js/vendor/jquery.js"></script>
+  <script src="js/libs/vendor/modernizr.js"></script>
+  <script src="js/libs/vendor/jquery.js"></script>
   <script src="js/libs/foundation/foundation.js"></script>
 </head>
 <body>
@@ -24,8 +24,6 @@
                 {{#link-to 'index' class='button small' tagName='li'}}Home{{/link-to}}
                 {{#link-to 'about' class='button small' tagName='li'}}about{{/link-to}}
                 {{#link-to 'people' class='button small' tagName='li'}}People{{/link-to}}
-                {{#link-to 'products' class='button small' tagName='li'}}Products{{/link-to}}
-                {{#link-to 'jobs' class='button small' tagName='li'}}Job{{/link-to}}
       </ul>
       </div>
     </div>
@@ -41,11 +39,6 @@
       This footer will always be here!
     </footer>
   </div>
-
-
-
-
-
     </script>
 
   <script type='text/x-handlebars' data-template-name='index'>
@@ -58,6 +51,7 @@
 
   <script type='text/x-handlebars' data-template-name='about'>
   <h1>Welcome to the about page!</h1>
+  <p>{{story}}</p>
   </script>
 
   <script type='text/x-handlebars' data-template-name='people'>
@@ -67,58 +61,6 @@
     {{/each}}
   </script>
 
-  <script type='text/x-handlebars' data-template-name='products'>
-  <div class='row'>
-      <div class='large-3 columns'>
-      <h3>people</h3>
-      {{#each}}
-      {{#link-to 'product' this tagName='li' class='button tiny'}}
-      {{name}}
-      {{/link-to}}
-      {{/each}}
-      </div>
-      <div class='large-8 columns right'>
-      {{outlet}}
-      </div>
-    </div>
-  </script>
-
-  <script type='text/x-handlebars' data-template-name='product'>
-  <p>here are the items</p>
-  <p>Hi there! <h1> {{name}}</h1></p>
-
-  </script>
-
-<script type='text/x-handlebars' data-template-name='products/index'>
-<p>Please choose from a name on the right</p>
-</script>
-
-<script type='text/x-handlebars' data-template-name='jobs'>
-<h1>Here the companies</h1>
-<div class='row'>
-    <div class='large-3 columns'>
-    <h3>Jobs</h3>
-    {{#each}}
-    {{#link-to 'job' this tagName='li' }}
-    {{company}}
-    {{/link-to}}
-    {{/each}}
-    </div>
-    <div class='large-8 columns right'>
-    {{outlet}}
-    </div>
-  </div>
-</script>
-
-<script type='text/x-handlebars' data-template-name='job'>
-<p>
-{{company}} has a great reason to work there: {{reason}}
-</p>
-</script>
-
-<script type='text/x-handlebars' data-template-name='jobs/index'>
-<h1>Nothing to see here!</h1>
-</script>
 
 
 <!-- Needed to run software -->
